@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import React from "react";
 import { FilterChecboxProps, FilterCheckbox } from "./filter-checkbox";
 import { Input } from "../ui";
@@ -27,19 +27,35 @@ export const CheckboxFilterGroup: React.FC<Props> = ({
   onChange,
   defaultValues,
 }) => {
+  const [showAll, setShowAll] = React.useState(false);
+  const [searchValue, setSearch] = React.useState("");
+
+  const onChangeSearchInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearch(e.target.value);
+  };
+
+  const list = showAll
+    ? items.filter((items) =>
+        items.text.toLowerCase().includes(searchValue.toLowerCase())
+      )
+    : defaultItems?.slice(0, limit);
+
   return (
     <div className={className}>
       <p className="font-bold mb-3">{title}</p>
 
-      <div className="mb-5">
-        <Input
-          placeholder={searchInputPlaceholder}
-          className="bg-gray-50 border-none"
-        />
-      </div>
+      {showAll && (
+        <div className="mb-5">
+          <Input
+            onChange={onChangeSearchInput}
+            placeholder={searchInputPlaceholder}
+            className="bg-gray-50 border-none"
+          />
+        </div>
+      )}
 
       <div className="flex flex-col gap-4 max-h-96 pr-2 overflow-auto scrollbar">
-        {items.map((item, index) => (
+        {list.map((item, index) => (
           <FilterCheckbox
             onCheckedChange={(ids) => console.log(ids)}
             checked={false}
@@ -50,6 +66,16 @@ export const CheckboxFilterGroup: React.FC<Props> = ({
           />
         ))}
       </div>
+      {items.length >= limit && (
+        <div className={showAll ? "border-t border-t-neutral-100 mt-5" : ""}>
+          <button
+            className="text-primary mt-5"
+            onClick={() => setShowAll(!showAll)}
+          >
+            {showAll ? "Скрыть" : "Посмотреть все"}
+          </button>
+        </div>
+      )}
     </div>
   );
 };

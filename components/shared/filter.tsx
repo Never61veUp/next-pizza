@@ -64,13 +64,36 @@ export const Filter: React.FC<React.PropsWithChildren<Props>> = ({
           { text: "сыр", value: "1" },
           { text: "тесто", value: "2" },
           { text: "мясо", value: "3" },
+          
         ]}
         items={[
           { text: "сыр", value: "1" },
           { text: "тесто", value: "2" },
           { text: "мясо", value: "3" },
+          { text: "сыр", value: "4" },
+          { text: "тесто", value: "5" },
+          { text: "мясо", value: "6" },
+          { text: "сыр", value: "7" },
+          { text: "тесто", value: "8" },
+          { text: "мясо", value: "9" },
         ]}
       />
+
+      <CheckboxFilterGroup
+        title="Тип теста"
+        limit={2}
+        className="mt-8"
+        defaultItems={[
+          { text: "Тонкое", value: "1" },
+          { text: "Традиционное", value: "2" }
+        ]}
+        items={[
+          { text: "Тонкое", value: "1" },
+          { text: "Традиционное", value: "2" }
+        ]}
+      />
+
+      
     </div>
   );
 };
