@@ -1,8 +1,11 @@
+'use client'
 import { Container, Title, TopBar, Filter } from "@/components/shared";
 import { ProductCard } from "@/components/shared/product-card";
 import { ProductGroupList } from "@/components/shared/products-group-list";
+import React from "react";
 
 export default function Home() {
+  const [activeCategory, setActiveCategory] = React.useState("");
   return (
     <>
       <Container className="mt-10">
@@ -38,9 +41,17 @@ export default function Home() {
                 
               },
               {
-                id: 2,
+                id: 3,
                 name: 'Двойной цыпленок',
                 imageUrl: 'https://media.dodostatic.net/image/r:584x584/11EE7D614CBE0530B7234B6D7A6E5F8E.avif',
+                price: 550,
+                items: [{price: 550}],
+                
+              },
+              {
+                id: 4,
+                name: 'Креветки со сладким чили',
+                imageUrl: 'https://media.dodostatic.net/image/r:584x584/11EEFB595A197C24BA932A0AD1144AFB.avif',
                 price: 550,
                 items: [{price: 550}],
                 
@@ -63,7 +74,15 @@ export default function Home() {
                 
               },
               {
-                id: 2,
+                id: 3,
+                name: 'Апельсиновый сок Rich',
+                imageUrl: 'https://media.dodostatic.net/image/r:584x584/11EE7D61B223E75EB71498BCAA0D4A0D.avif',
+                price: 550,
+                items: [{price: 550}],
+                
+              },
+              {
+                id: 4,
                 name: 'Таежный чай, 10 пакетиков',
                 imageUrl: 'https://media.dodostatic.net/image/r:584x584/11EE797026C5FA9A8298F6EBED364569.avif',
                 price: 550,
